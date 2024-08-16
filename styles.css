@@ -1,0 +1,182 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Menghilangkan scroll bar */
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    font-family: "Orbitron", sans-serif;
+    background: linear-gradient(45deg, #0a0a0a, #1a1a1a);
+    background-size: 400% 400%;
+    animation: gradient-bg 10s ease infinite;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('bgweb2.jpg');
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+    filter: blur(3px);
+    opacity: 0.8;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.logo {
+    width: 100px;
+    height: auto;
+    margin-bottom: 1px;
+    filter: drop-shadow(0 0 10px #00ffff);
+    animation: glow 1.5s infinite alternate;
+}
+
+@keyframes glow {
+    from {
+        filter: drop-shadow(0 0 10px #00ffff);
+    }
+    to {
+        filter: drop-shadow(0 0 20px #00ffff);
+    }
+}
+
+header h1 {
+    font-size: 2.5rem;
+    background: linear-gradient(45deg, #fff, #00ffff);
+    -webkit-background-clip: text;
+    color: transparent;
+    animation: glow-text 2s infinite alternate;
+}
+
+.profile-container {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.profiles {
+    display: flex;
+    flex-wrap: nowrap; /* Mencegah elemen turun ke baris baru */
+    gap: 20px;
+    width: calc(100% * 5); /* Sesuaikan dengan jumlah profil */
+    animation: slide 30s linear infinite; /* Mengatur kecepatan slide */
+}
+
+.profile {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    flex: 0 0 auto; /* Memastikan elemen tidak menyusut */
+    box-sizing: border-box; /* Memastikan border termasuk dalam ukuran elemen */
+}
+
+.profile img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #00ffff;
+    transition: transform 0.3s ease-in-out;
+}
+
+.profile:hover {
+    transform: none; /* Hilangkan efek transform pada hover */
+    box-shadow: none; /* Hilangkan efek box-shadow pada hover */
+}
+
+.profile:hover img {
+    transform: none; /* Hilangkan efek transform pada gambar saat hover */
+}
+
+.profile h2, .profile p {
+    transition: color 0.3s ease-in-out;
+}
+
+.profile:hover h2, .profile:hover p {
+    color: inherit; /* Warna teks tidak berubah pada hover */
+}
+
+footer {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #ffffff;
+}
+
+@keyframes gradient-bg {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.particle {
+    position: absolute;
+    background: #00ffff;
+    border-radius: 50%;
+    opacity: 0.7;
+    animation: float 10s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-element {
+    opacity: 0;
+    animation: fade-in 1s forwards;
+    animation-delay: var(--delay, 0s);
+}
+
+#background-music {
+    display: none; /* Sembunyikan kontrol audio */
+}
